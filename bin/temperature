@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+namespace Temperature;
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+use Temperature\Command\ConvertTemperatureCommand;
+
+$app = new Application();
+
+$app->add(new ConvertTemperatureCommand());
+
+$app->run();
