@@ -38,7 +38,7 @@ final class TemperatureCommandTest extends TestCase
         $this->assertEqualsTrimmed('The temperature is 212 degrees Fahrenheit.', $this->commandTester->getDisplay());
     }
 
-    public function testConvertFahrenheitToCelciusPositive(): void 
+    public function testConvertFahrenheitToCelsiusPositive(): void 
     {
         $this->commandTester->execute([
             'temperature' => '212',
@@ -62,7 +62,7 @@ final class TemperatureCommandTest extends TestCase
         $this->assertEquals('The temperature is -148 degrees Fahrenheit.', $output);
     }
 
-    public function testConvertFahrenheitToCelciusNegative(): void
+    public function testConvertFahrenheitToCelsiusNegative(): void
     {
         $this->commandTester->execute([
             'temperature' => '-212',

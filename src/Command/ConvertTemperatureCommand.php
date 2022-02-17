@@ -27,7 +27,7 @@ class ConvertTemperatureCommand extends Command
             // Check that the temperature is a numeric value before converting. 
             $unit = strtolower($input->getArgument('unit')); // Make unit string lowercase for easier comparison.
 
-            if ($unit == 'c' || $unit == 'celcius') {
+            if ($unit == 'c' || $unit == 'celsius') {
                 $temperature = $input->getArgument('temperature');
                 $temperature = $temperature * 9 / 5 + 32;
 
