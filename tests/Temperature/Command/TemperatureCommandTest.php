@@ -45,9 +45,7 @@ final class TemperatureCommandTest extends TestCase
             'unit' => 'f'
         ]);
 
-        $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay());
-
-        $this->assertEquals('The temperature is 100 degrees Celsius.', $output);
+        $this->assertEqualsTrimmed('The temperature is 100 degrees Celsius.', $this->commandTester->getDisplay());
     }
 
     public function testConvertCelsiusToFahrenheitNegative(): void
@@ -59,7 +57,7 @@ final class TemperatureCommandTest extends TestCase
 
         $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay());
 
-        $this->assertEquals('The temperature is -148 degrees Fahrenheit.', $output);
+        $this->assertEqualsTrimmed('The temperature is -148 degrees Fahrenheit.', $this->commandTester->getDisplay());
     }
 
     public function testConvertFahrenheitToCelsiusNegative(): void
@@ -71,7 +69,7 @@ final class TemperatureCommandTest extends TestCase
 
         $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay());
 
-        $this->assertEquals('The temperature is -135.56 degrees Celsius.', $output);
+        $this->assertEqualsTrimmed('The temperature is -135.56 degrees Celsius.', $this->commandTester->getDisplay());
     }
 
     public function testConvertInvalidUnit(): void 
@@ -83,7 +81,7 @@ final class TemperatureCommandTest extends TestCase
 
         $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay());
 
-        $this->assertEquals('Please specify a valid unit.', $output);
+        $this->assertEqualsTrimmed('Please specify a valid unit.', $this->commandTester->getDisplay());
     }
 
     public function testConvertInvalidTemperature(): void {
@@ -94,6 +92,6 @@ final class TemperatureCommandTest extends TestCase
 
         $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay());
 
-        $this->assertEquals('Please specify a valid temperature.', $output);
+        $this->assertEqualsTrimmed('Please specify a valid temperature.', $this->commandTester->getDisplay());
     }
 }
