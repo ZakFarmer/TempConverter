@@ -22,6 +22,12 @@ final class TemperatureCommandTest extends TestCase
 
     }
 
+    // Custom assertion to save reusing the same code to trim linebreaks/returns for each test.
+    public function assertEqualsTrimmed($expected, $actual)
+    {
+        $this->assertEquals(trim($expected), trim($actual));
+    }
+
     public function testConvertCelsiusToFahrenheitPositive(): void
     {
         $this->commandTester->execute([
@@ -29,9 +35,7 @@ final class TemperatureCommandTest extends TestCase
             'unit' => 'c'
         ]);
 
-        $output = preg_replace("/\r|\n/", "", $this->commandTester->getDisplay()); // Trim line breaks and carriage returns so raw text can be compared.
-
-        $this->assertEquals('The temperature is 212 degrees Fahrenheit.', $output);
+        $this->assertEqualsTrimmed('The temperature is 212 degrees Fahrenheit.', $this->commandTester->getDisplay());
     }
 
     public function testConvertFahrenheitToCelciusPositive(): void 

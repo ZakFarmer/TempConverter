@@ -7,8 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ConvertTemperatureCommand extends Command 
-{
-    
+{ 
     protected static $defaultName = 'convert';
 
     protected function configure() 
@@ -23,7 +22,7 @@ class ConvertTemperatureCommand extends Command
     protected function execute (InputInterface $input, OutputInterface $output) 
     {       
         $temperature = $input->getArgument('temperature');
-        
+
         if (is_numeric($temperature)) {
             // Check that the temperature is a numeric value before converting. 
             $unit = strtolower($input->getArgument('unit')); // Make unit string lowercase for easier comparison.
@@ -48,8 +47,7 @@ class ConvertTemperatureCommand extends Command
             $output->writeln('Please specify a valid temperature.');
             return self::FAILURE;
         }
-        
-        
+    
         return self::SUCCESS;
     }
 }
